@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from flask_restful import APi, Resource 
+from flask_restful import Api, Resource 
 from pymongo import MongoClient 
 import bcrypt 
 import requests
@@ -43,9 +43,10 @@ class Register(Resource):
 
         retJson = {
             "status": 200,
-            "msg": "You successfully signed up for this API"
+            "msg": "You successfully signed up for this API",
+            "data": postedData
         }
-        return jsonify(retJson)
+        return retJson
 
 def verifyCredentials(username, password):
     if not UserExists(username):
